@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>异步请求</title>
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        var btn = $("#flush");
+        btn.click(function () {
+          $.ajax({
+            url: "/getCode",
+            type: "get",
+            data: "id=1", //字符串
+            dataType: "text",
+            success: function (data) {
+              console.log(data);
+              $("#code").val(data);
+              //   alert("后台验证码：" + data);
+            },
+          });
+        });
+
+        var btn = $("#login");
+        btn.click(function () {
+          alert("login~!");
+          // $.ajax({
+          //     url: "/search",
+          //     type: "post",
+          //     data: {
+          //         id: $("#sid").val(),
+          //         username: $("#uname").val(),
+          //         password: $("#pwd").val(),
+          //     },
+          //     dataType: "json",
+          //     success: function (data) {
+          //         console.log(data);
+          //         $("#sid").val(data.id);
+          //         $("#uname").val(data.name);
+          //         $("#score").val(data.score);
+          //     },
+          // });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h2>用户登录</h2>
+      <form>
+        用户名：<input type="text" name="username" /><br />
+        密&emsp;码：<input type="password" name="password" /><br />
+        验证码：<input type="text" name="code" id="code" /><br /><br />
+        <input type="button" value="登录" id="login" />&emsp;<input
+          type="button"
+          id="flush"
+          value="获取验证码"
+        />
+      </form>
+    </div>
+  </body>
+</html>

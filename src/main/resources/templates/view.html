@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ECharts</title>
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-3.4.1.js"></script>
+  </head>
+
+  <body>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px; height: 400px"></div>
+
+    <script type="text/javascript">
+      // 基于准备好的dom，初始化echarts实例
+      var myChart = echarts.init(document.getElementById("main"));
+
+      // 新建productName与nums数组来接受数据，因为我们
+      var productName = [];
+      var nums = [];
+
+      //AJAX接收数据主体
+      $.ajax({
+        type: "GET",
+        url: "/clothes",
+        dataType: "json",
+        async: false,
+        success: function (result) {
+          for (var i = 0; i < result.length; i++) {
+            productName.push(result[i].productName);
+            nums.push(result[i].nums);
+          }
+        },
+        error: function (errorMsg) {
+          alert("获取后台数据失败！");
+        },
+      });
+
+      // 指定图表的配置项和数据
+      var option = {
+        title: {
+          text: "ECharts 入门示例",
+        },
+        tooltip: {},
+        legend: {
+          data: ["销量"],
+        },
+        xAxis: {
+          //结合
+          data: productName,
+        },
+
+        yAxis: {},
+        series: [
+          {
+            name: "销量",
+            type: "bar",
+            //结合
+            data: nums,
+          },
+        ],
+      };
+
+      // 使用刚指定的配置项和数据显示图表。
+      myChart.setOption(option);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+spring:
+  thymeleaf:
+    # 禁用缓存
+    cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+  datasource:
+    url: jdbc:mysql://localhost:3306/university?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 20
+      max-active: 100
+      min-idle: 10
+# mvc:
+#     static-path-pattern: /static/**
+server:
+  port: 8181
+# 配置SQL日志
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.zjp.echartsdemo.entity

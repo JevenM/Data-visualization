@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+  <html xmlns:th="http://www.thymeleaf.org"></html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>研究生初试成绩查询</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <div style="border: 1px solid">
+        <h3>2022年研究生考试初始成绩查询</h3>
+        <br />
+        准考证号：<span th:text="${student.sid}"></span><br />
+        姓名：<span th:text="${student.sname}"></span><br />
+        身份证号：<span th:text="${student.card}"></span><br />
+        <hr />
+        思想政治理论：<span th:text="${student.politics}"></span><br />
+        英语(一): <span th:text="${student.english}"></span><br />
+        数学(一): <span th:text="${student.math}"></span><br />
+        计算机科学专业基础(408): <span th:text="${student.computer}"></span
+        ><br />
+        总分：<span th:text="${totalScore}"></span><br />
+      </div>
+      <p>
+        说明：若查询的成绩为负值,表示有缺考、违纪等情况。若仍对查询结果有疑问,请咨询相应的招生单位。
+      </p>
+    </div>
+  </body>
+</html>

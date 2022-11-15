@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>系统登录</title>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        var btn = $("#btn");
+        // 点击事件
+        btn.click(function () {
+          $.ajax({
+            url: "/suda/login",
+            type: "post",
+            data: {
+              id: $("#sid").val(),
+              username: $("#uname").val(),
+              password: $("#pwd").val(),
+            },
+            dataType: "json",
+            success: function (data) {
+              if (data.code == "100") {
+                //登录成功，则跳转到成绩查询页面
+                window.location.href = "/suda/searchById/" + data.result;
+              } else {
+                //登录失败，则给出提示信息
+                var msg = $("#btn");
+                msg.after(
+                  "<br><br><span style='color:red;'>提示：" +
+                    data.result +
+                    "</span>"
+                );
+              }
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <img src="img/brand.png" style="width: 280px; height: 100px" />
+      <h3>2022年硕士研究生招生考试成绩查询系统</h3>
+      <img src="img/logo.jpeg" style="width: 500px; height: 300px" />
+      <!--这里不通过form表单提交客户端请求-->
+      <form>
+        准考证号：<input type="text" name="id" id="sid" /><br />
+        考生姓名：<input type="text" name="username" id="uname" /><br />
+        身份证号：<input type="text" name="password" id="pwd" /><br />
+        <br />
+        <input type="button" value="查询" id="btn" />
+      </form>
+    </div>
+  </body>
+</html>

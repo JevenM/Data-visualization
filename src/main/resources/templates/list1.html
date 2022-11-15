@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <script th:src="@{js/jquery-3.4.1.js}"></script>
+  </head>
+  <body>
+    <button onclick="list()">获取列表</button>
+
+    <table border="1" th:fragment="list" id="list">
+      <thead>
+        <th>用户</th>
+      </thead>
+      <tr th:each="l:${list}">
+        <td>[[${l}]]</td>
+      </tr>
+    </table>
+  </body>
+  <script>
+    function list() {
+      //第一种方法
+      $("#list").load("/list");
+      //第二种方法
+      //   $.ajax({
+      //     url: "/list",
+      //     type: "POST",
+      //     success: function (data) {
+      //       $("#list").html(data);
+      //     },
+      //   });
+    }
+  </script>
+</html>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zjp.echartsdemo.dao.ClassMapper">
+    <!--定义结果映射，因为表字段名与实体属性名不完全一致-->
+    <resultMap id="classMap" type="com.zjp.echartsdemo.entity.Class">
+        <result property="id" column="id" />
+        <result property="className" column="className" />
+        <result property="boys" column="boys" />
+        <result property="girls" column="girls" />
+    </resultMap>
+
+    <select id="findAll" resultMap="classMap">
+        SELECT * FROM class
+    </select>
+</mapper>

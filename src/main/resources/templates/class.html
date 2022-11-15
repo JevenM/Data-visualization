@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>19级各班人数柱状图</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+      .box {
+        width: 600px;
+        height: 400px;
+        border: 1px solid cornflowerblue;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="button" value="显示柱状图" class="btnShowBar" />
+    <hr />
+    <div class="box"></div>
+    <script>
+      // 获取box元素
+      var box = document.getElementsByClassName("box")[0];
+      // 获取btnShowBar元素
+      var btnShowBar = document.getElementsByClassName("btnShowBar")[0];
+
+      // 定义按钮单击事件
+      btnShowBar.onclick = function () {
+        // 1. 初始化ECharts
+        var my_box = echarts.init(box);
+        // 指定图表的配置项和数据
+        my_box.setOption({
+          title: {
+            text: "19级各班人数条形图",
+          },
+          tooltip: {},
+          legend: {
+            //   data: ["销量"],
+          },
+          xAxis: {
+            data: [],
+            axisLabel: {
+              interval: 0,
+            },
+          },
+          yAxis: {},
+          series: [
+            {
+              name: "男生人数",
+              type: "bar",
+              data: [],
+            },
+            {
+              name: "女生人数",
+              type: "bar",
+              data: [],
+            },
+          ],
+        });
+
+        my_box.showLoading();
+
+        // 获取后台返回的JSON数据
+        $.get("/getAllClass", function (data) {
+          // 定义三个数组
+          class_list = [];
+          boy_list = [];
+          girl_list = [];
+          if (data) {
+            // 将json数据写入数组
+            for (var i = 0; i < data.length; i++) {
+              class_list.push(data[i].className);
+              boy_list.push(data[i].boys);
+              girl_list.push(data[i].girls);
+            }
+            my_box.hideLoading(); //隐藏加载动画
+            // 2. 进行参数配置
+            var option = {
+              // 标题
+              title: {
+                text: "19级各班人数条形图",
+                x: "center",
+                y: "top",
+                textAlign: "left",
+                textStyle: {
+                  fontFamily: "楷体",
+                  fontSize: 35,
+                  textStyle: "bold",
+                },
+              },
+              tooltip: {},
+
+              // 图例
+              legend: {
+                left: "right",
+                orient: "vertical",
+              },
+
+              // x轴数据
+              xAxis: {
+                data: class_list,
+              },
+
+              // y轴数据
+              yAxis: {},
+
+              // 数据信息
+              series: [
+                {
+                  name: "男生人数",
+                  type: "bar",
+                  data: boy_list,
+                  // itemStyle: {
+                  //   normal: {
+                  //     color: "#0000aa",
+                  //   },
+                  // },
+                },
+                {
+                  name: "女生人数",
+                  type: "bar",
+                  data: girl_list,
+                  // itemStyle: {
+                  //   normal: {
+                  //     color: "#aa0000",
+                  //   },
+                  // },
+                },
+              ],
+            };
+
+            // 3. 可视化呈现
+            my_box.setOption(option);
+          } else {
+            //请求失败时执行该函数
+            alert("图表请求数据失败!");
+            my_box.hideLoading();
+          }
+        });
+      };
+    </script>
+  </body>
+</html>
