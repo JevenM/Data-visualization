@@ -29,12 +29,23 @@
         var my_box = echarts.init(box);
         // 指定图表的配置项和数据
         my_box.setOption({
+          // 标题
           title: {
             text: "19级各班人数条形图",
+            x: "center",
+            y: "top",
+            textAlign: "left",
+            textStyle: {
+              fontFamily: "楷体",
+              fontSize: 35,
+              textStyle: "bold",
+            },
           },
           tooltip: {},
+          // 图例
           legend: {
-            //   data: ["销量"],
+            left: "right",
+            orient: "vertical",
           },
           xAxis: {
             data: [],
@@ -67,6 +78,12 @@
           girl_list = [];
           if (data) {
             // 将json数据写入数组
+            //请求成功时执行该函数内容，result即为服务器返回的json对象
+            // $.each(data, function (index, item) {
+            //   class_list.push(item.className); //挨个取出类别并填入类别数组
+            //   boy_list.push(item.boys);
+            //   girl_list.push(item.girls);
+            // });
             for (var i = 0; i < data.length; i++) {
               class_list.push(data[i].className);
               boy_list.push(data[i].boys);
@@ -78,30 +95,12 @@
               // 标题
               title: {
                 text: "19级各班人数条形图",
-                x: "center",
-                y: "top",
-                textAlign: "left",
-                textStyle: {
-                  fontFamily: "楷体",
-                  fontSize: 35,
-                  textStyle: "bold",
-                },
-              },
-              tooltip: {},
-
-              // 图例
-              legend: {
-                left: "right",
-                orient: "vertical",
               },
 
               // x轴数据
               xAxis: {
                 data: class_list,
               },
-
-              // y轴数据
-              yAxis: {},
 
               // 数据信息
               series: [

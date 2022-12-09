@@ -31,19 +31,46 @@
         title: {
           text: "ECharts 入门示例",
         },
-        tooltip: {},
+        tooltip: { trigger: "axis" },
+        toolbox: {
+          show: true,
+          feature: {
+            mark: { show: true },
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ["line", "bar"] },
+            restore: { show: true },
+            saveAsImage: { show: true },
+          },
+        },
+        calculable: true,
         legend: {
           data: ["销量"],
         },
         xAxis: {
+          type: "category",
+          boundaryGap: false, //取消左侧的间距
           data: [skirt, "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"],
         },
-        yAxis: {},
+        yAxis: {
+          type: "value",
+          splitLine: { show: false }, //去除网格线
+          name: "",
+        },
         series: [
           {
             name: "销量",
             type: "bar",
             data: [nums, 20, 36, 10, 10, 20],
+            markPoint: {
+              data: [
+                { type: "max", name: "最大值" },
+                { type: "min", name: "最小值" },
+              ],
+            },
+            markLine: {
+              data: [{ type: "average", name: "平均值" }],
+            },
+            symbol: "emptydiamond", //设置折线图中表示每个坐标点的符号 emptycircle：空心圆；emptyrect：空心矩形；circle：实心圆；emptydiamond：菱形
           },
         ],
       };
