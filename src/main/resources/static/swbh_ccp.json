@@ -1,0 +1,111 @@
+{
+	"name": "生物病害控制计划表",
+	"ccp1": {
+		"name": "产地选择",
+		"bool_environment": 1,
+		"bool_air": 0,
+		"bool_soil": 0,
+		"water": {
+			"turbidity": 1,
+			"bool_smellTaste": 0,
+			"num_fecalColiforms": "2000/100mL"
+		}
+	},
+	"ccp2": {
+		"name": "栽培原料及辅料选择",
+		"bool_bacteria": 0,
+		"bool_pest": 0
+	},
+	"ccp3": {
+		"name": "培养料灭菌",
+		"autoclave": {
+			"pressure": "0.12MPa",
+			"time": "1.5h",
+			"bool_mushroomBag": 0,
+			"temperature": "121°C"
+		},
+		"atmosphericSterilization": {
+			"temperature": "100°C",
+			"time": {
+				"summer": "10h",
+				"winter": "8h"
+			},
+			"heatingDuration": "5h"
+		}
+	},
+	"ccp4": {
+		"name": "接种",
+		"inoculation": {
+			"bool_bacteria": 0,
+			"pollutionRate": "0.05%",
+			"inoculationAreaPurificationLevel": "百级以上",
+			"otherAreasPurificationLevel": "1万级以上"
+		}
+	},
+	"ccp5": {
+		"name": "菌丝体培养",
+		"workshopPurificationLevel": "10万级以上",
+		"growthPhase": {
+			"colonizationPeriod": "5-7d，26-28℃",
+			"coverPeriod": "7-15d，23-25℃",
+			"robustPeriod": "16-35d，23-24℃",
+			"afterMaturity": ">35d，18-22℃"
+		},
+		"relativeHumidity": "60%",
+		"illuination": "避光",
+		"mixedBacteriaVisible": "有光",
+		"matureBacteriaBag": "4-6℃，避光贮存，≤60d"
+	},
+	"ccp6": {
+		"name": "出耳管理",
+		"developmentalStage": {
+			"primordial": {
+				"temperature": "20°C",
+				"humidity": "80%",
+				"ventilation": 1,
+				"illumination": 1
+			},
+			"sporophoreDifferentiation": {
+				"temperature": "15°C",
+				"humidity": "85%",
+				"ventilation": 1,
+				"illumination": 1
+			},
+			"sporophoreGrowthDevelopment": {
+				"temperature": "15°C",
+				"humidity": "90%",
+				"ventilation": 1,
+				"illumination": 1
+			}
+		},
+		"bool_bacteria": 0,
+		"moldContaminationRate": "5%"
+	},
+	"ccp7": {
+		"name": "采收干制",
+		"oryzicAcid": "0.25mg/kg",
+		"citrinin": "50μg/kg",
+		"patulin": "50μg/kg",
+		"zearalenone": "60μg/kg",
+		"deoxynivalenol": "1000μg/kg",
+		"pseudomonasCocovenenans": 0, 
+		"naturalDrying": {
+			"ventilateClean": 1,
+			"sunny": 1,
+			"dryingMaterialLayerThickness": "10cm", 
+			"turnsNum": 2
+		},
+		"manualDrying": {
+			"drying temperature": "55°C",
+			"turnsNum": 2,
+			"ventilateClean": 1,
+			"dryingMaterialLayerThickness": "10cm"
+		},
+		"waterContent": "12%",
+	},
+	"ccp8": {
+		"name": "包装、贮存、运输",
+		"storageConditions": "干燥、通风",
+		"packingSealingCondition": "包装完好、无破损"
+	}
+}

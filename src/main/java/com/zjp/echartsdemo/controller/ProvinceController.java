@@ -5,20 +5,28 @@ import com.zjp.echartsdemo.entity.Province;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjp.echartsdemo.entity.Class;
 import com.zjp.echartsdemo.service.ClassService;
 import com.zjp.echartsdemo.service.IprovinceService;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.w3c.dom.NameList;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -49,9 +57,45 @@ public class ProvinceController {
         return "class";
     }
 
+    @GetMapping("/dating")
+    public String gotoDating() {
+        return "dating";
+    }
+
+    @GetMapping("/json")
+    public String gotoJson() {
+        return "ceshijson";
+    }
+
+    @RequestMapping("/{filename}")
+    @ResponseBody
+    public JSON json(@PathVariable("filename") String filename) throws Exception {
+        // System.out.println(filename);
+        Resource resource = new ClassPathResource("static/" + filename);
+        File file = resource.getFile();
+        Reader reader = new InputStreamReader(new FileInputStream(file), "utf-8");
+        int ch = 0;
+        StringBuffer sb = new StringBuffer();
+        while ((ch = reader.read()) != -1) {
+            sb.append((char) ch);
+        }
+        reader.close();
+        String jsonStr = sb.toString();
+        // System.out.println(jsonStr);
+        if (jsonStr.charAt(0) == '[') {
+            JSONArray jsonArr = JSON.parseArray(jsonStr);
+            // System.out.println(jsonArr);
+            return jsonArr;
+        } else {
+            JSONObject jsonObj = JSON.parseObject(jsonStr);
+            // System.out.println(jsonObj);
+            return jsonObj;
+        }
+    }
+
     @RequestMapping(value = "/getAllClass", produces = "application/json; charset=utf-8")
     @ResponseBody
-    public List<Class> getAll() {
+    public List<Class> showAllClass() {
         return classService.findAll();
     }
 
@@ -89,7 +133,7 @@ public class ProvinceController {
         String name = "name";
         o1.put(name, "大棚数");
         String value = "value";
-        o1.put(value, 1300);
+        o1.put(value, 1310);
         JSONObject o2 = new JSONObject();
         o2.put(name, "仓库");
         o2.put(value, 90);

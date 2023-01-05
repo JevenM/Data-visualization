@@ -16,8 +16,9 @@ spring:
       initial-size: 20
       max-active: 100
       min-idle: 10
-# mvc:
-#     static-path-pattern: /static/**
+
+  # mvc:
+  # static-path-pattern: /static/**
 server:
   port: 8181
 # 配置SQL日志

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zjp.echartsdemo.dao.ProvinceMapper;
 import com.zjp.echartsdemo.entity.Province;
@@ -15,6 +16,7 @@ public class IprovinceImpl implements IprovinceService {
     ProvinceMapper pMapper;
 
     @Override
+    @Transactional
     public List<Province> selectAll() {
         return pMapper.selectAll();
     }

@@ -30,15 +30,15 @@ public class SearchController {
         String id = request.getParameter("id");
         String username = request.getParameter("username");
         String card = request.getParameter("password");
-        // 查询判断
+        // query equal
         QueryWrapper<Student> wrapper = new QueryWrapper<>();
         wrapper
                 .eq("sid", id)
                 .eq("sname", username)
                 .eq("card", card);
         Integer count = studentMapper.selectCount(wrapper);
-        System.out.println(count);
-        // 返回�?
+        // System.out.println("the count is " + count);
+
         HashMap<String, String> map = new HashMap<>();
         if (count == 1) {
             // 登录验证成功，通过id查询该考生的成绩（id具有唯一性）

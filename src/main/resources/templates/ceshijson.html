@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ECharts</title>
+    <script src="/js/echarts.js"></script>
+    <script src="/js/jquery-3.4.1.js"></script>
+  </head>
+
+  <body>
+    <!-- ECharts prepare a DOM -->
+    <div id="main" style="width: 600px; height: 400px"></div>
+
+    <script type="text/javascript">
+      function main() {
+        var myChart = echarts.init(document.getElementById("main"));
+        option = {
+          title: {
+            text: "年龄分布",
+            top: "10%",
+            left: "center",
+            textStyle: {
+              color: "#17c0ff",
+              fontSize: "12",
+            },
+          },
+
+          tooltip: {
+            trigger: "item",
+            formatter: "{a} <br/>{b}: {c} ({d}%)",
+            position: function (p) {
+              // Where p is the current mouse position
+              return [p[0] + 10, p[1] - 10];
+            },
+          },
+          toolbox: {
+            show: true,
+            feature: {
+              mark: { show: true },
+              dataView: { show: true, readOnly: false },
+              magicType: { show: true, type: ["line", "bar"] },
+              restore: { show: true },
+              saveAsImage: { show: true },
+            },
+          },
+          grid: {
+            left: "0",
+            right: "10",
+            bottom: "25%",
+            top: "20%",
+            containLabel: true,
+          },
+          xAxis: {
+            type: "category",
+            data: [],
+            axisLabel: {
+              textStyle: {
+                // color: "rgba(255,255,255,.8)",
+                fontSize: 10,
+              },
+            },
+            axisLine: {
+              lineStyle: {
+                // color: "rgba(255,255,255,.2)",
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                // color: "rgba(255,255,255,.1)",
+              },
+            },
+          },
+          yAxis: {
+            type: "value",
+            data: [],
+            axisLabel: {
+              textStyle: {
+                // color: "rgba(255,255,255,.8)",
+                fontSize: 10,
+              },
+            },
+            axisLine: {
+              lineStyle: {
+                // color: "rgba(255,255,255,.2)",
+              },
+            },
+            splitLine: {
+              lineStyle: {
+                // color: "rgba(255,255,255,.1)",
+              },
+            },
+          },
+          series: [
+            {
+              name: "年龄分布",
+              type: "bar",
+              stack: "total",
+              label: {
+                show: true,
+              },
+            },
+          ],
+        };
+
+        myChart.setOption(option);
+        window.addEventListener("resize", function () {
+          myChart.resize();
+        });
+      }
+
+      function myInterval(callback, interval = 2000) {
+        let timer;
+        let isStop = false;
+        const stop = () => {
+          console.log("停止");
+          isStop = true;
+          clearTimeout(timer);
+        };
+        const start = async () => {
+          isStop = false;
+          await loop();
+        };
+        const loop = async () => {
+          try {
+            await callback(stop);
+          } catch (err) {
+            console.error("轮询出错：", err);
+            throw new Error("轮询出错：", err);
+          }
+          if (isStop) return;
+          return (timer = setTimeout(loop, interval));
+        };
+        return {
+          start,
+          stop,
+        };
+      }
+
+      let count = 0;
+      function mainLoop(stop) {
+        asyncData();
+        count += 1;
+        console.log("count：", count);
+        if (count == 5) {
+          stop();
+        }
+      }
+
+      function getKeys(dataList) {
+        var keys = [];
+        var len = dataList.length;
+        for (var i = 0; i < len; i++) keys.push(dataList[i].name);
+        return keys;
+      }
+
+      function asyncData() {
+        $.getJSON("/bar_age.json").done(function (data) {
+          var myChart = echarts.init(document.getElementById("main"));
+          myChart.setOption({
+            xAxis: { data: getKeys(data) },
+            series: [{ data: data }],
+          });
+        }); //end $.getJSON
+      }
+
+      main();
+
+      // 轮询管理器
+      const intervalManager = myInterval(mainLoop);
+      intervalManager.start();
+    </script>
+  </body>
+</html>
