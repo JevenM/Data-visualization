@@ -10,24 +10,38 @@
   <body>
     <!-- ECharts prepare a DOM -->
     <div id="main" style="width: 600px; height: 400px"></div>
-
+    <div id="relativeHumidity" style="width: 600px; height: 400px"></div>
+    <div id="other" style="width: 600px; height: 400px">
+      <ul>
+        <li id="workshopPurificationLevel"></li>
+        <li id="illuination"></li>
+        <li id="mixedBacteriaVisible"></li>
+        <li id="matureBacteriaBag"></li>
+      </ul>
+    </div>
     <script type="text/javascript">
       function main() {
         var myChart = echarts.init(document.getElementById("main"));
-        option = {
+        var myChart1 = echarts.init(
+          document.getElementById("relativeHumidity")
+        );
+        const option = {
           title: {
-            text: "年龄分布",
+            text: "生育阶段",
             top: "10%",
             left: "center",
-            textStyle: {
-              color: "#17c0ff",
-              fontSize: "12",
-            },
+            // textStyle: {
+            //   color: "#17c0ff",
+            //   fontSize: "12",
+            // },
           },
-
+          legend: {
+            data: ["日期", "气温"],
+            bottom: 10,
+          },
           tooltip: {
             trigger: "item",
-            formatter: "{a} <br/>{b}: {c} ({d}%)",
+            formatter: "{a} <br/>{b}: {c}",
             position: function (p) {
               // Where p is the current mouse position
               return [p[0] + 10, p[1] - 10];
@@ -44,20 +58,28 @@
             },
           },
           grid: {
-            left: "0",
-            right: "10",
-            bottom: "25%",
+            // left: "0",
+            // right: "10",
+            // bottom: "25%",
             top: "20%",
-            containLabel: true,
+            // containLabel: true,
           },
           xAxis: {
             type: "category",
-            data: [],
+            data: ["定殖期", "封面期", "健壮期", "成熟后"],
             axisLabel: {
               textStyle: {
                 // color: "rgba(255,255,255,.8)",
                 fontSize: 10,
               },
+              style: {
+                rotate: 20,
+                textAlign: "left",
+                textBaseline: "top",
+              },
+            },
+            axisTick: {
+              show: true,
             },
             axisLine: {
               lineStyle: {
@@ -70,41 +92,133 @@
               },
             },
           },
-          yAxis: {
-            type: "value",
-            data: [],
-            axisLabel: {
-              textStyle: {
-                // color: "rgba(255,255,255,.8)",
-                fontSize: 10,
-              },
-            },
-            axisLine: {
-              lineStyle: {
-                // color: "rgba(255,255,255,.2)",
-              },
-            },
-            splitLine: {
-              lineStyle: {
-                // color: "rgba(255,255,255,.1)",
-              },
-            },
-          },
-          series: [
+          yAxis: [
             {
-              name: "年龄分布",
+              name: "日期",
+              data: "value",
+              min: 0,
+              max: 40,
+              interval: 1,
+              splitLine: {
+                style: {
+                  lineDash: [3, 3],
+                },
+              },
+              axisLabel: {
+                formatter: "{value} d",
+              },
+              axisTick: {
+                show: true,
+              },
+            },
+            {
+              name: "气温",
+              data: "value",
+              position: "right",
+              min: 15,
+              max: 30,
+              interval: 1,
+              splitLine: {
+                show: true,
+              },
+              axisLabel: {
+                formatter: "{value} °C",
+              },
+              axisTick: {
+                show: true,
+              },
+            },
+            // {
+            //   type: "value",
+            //   data: [],
+            //   axisLabel: {
+            //     textStyle: {
+            //       // color: "rgba(255,255,255,.8)",
+            //       fontSize: 10,
+            //     },
+            //   },
+            //   axisLine: {
+            //     lineStyle: {
+            //       // color: "rgba(255,255,255,.2)",
+            //     },
+            //   },
+            //   splitLine: {
+            //     lineStyle: {
+            //       // color: "rgba(255,255,255,.1)",
+            //     },
+            //   },
+            // },
+          ],
+          series: [
+            // {
+            //   name: "年龄分布",
+            //   type: "bar",
+            //   stack: "total",
+            //   label: {
+            //     show: true,
+            //   },
+            // },
+            {
+              name: "日期",
+              data: [],
               type: "bar",
               stack: "total",
               label: {
                 show: true,
+                position: "center",
+                offset: [0, 0],
+                style: {
+                  fill: "#fff",
+                },
+              },
+              gradient: {
+                color: ["#37a2da", "#67e0e3"],
+              },
+              animationCurve: "easeOutBounce",
+            },
+            {
+              name: "气温",
+              data: [],
+              type: "line",
+              label: {
+                show: true,
+                position: "center",
+                offset: [0, 0],
+                style: {
+                  fill: "#000",
+                },
+              },
+              yAxisIndex: 1,
+              animationCurve: "easeOutBounce",
+            },
+          ],
+        };
+        const option1 = {
+          title: {
+            text: "相对湿度",
+          },
+          series: [
+            {
+              type: "gauge",
+              data: [
+                {
+                  name: "相对湿度",
+                  value: 0,
+                  gradient: ["#e7bcf3", "#e690d1", "#fb7293"],
+                  localGradient: true,
+                },
+              ],
+              axisLabel: {
+                formatter: "{value}%",
               },
             },
           ],
         };
-
         myChart.setOption(option);
+        myChart1.setOption(option1);
         window.addEventListener("resize", function () {
           myChart.resize();
+          myChart1.resize();
         });
       }
 
@@ -146,20 +260,54 @@
         }
       }
 
-      function getKeys(dataList) {
-        var keys = [];
-        var len = dataList.length;
-        for (var i = 0; i < len; i++) keys.push(dataList[i].name);
-        return keys;
-      }
+      //   function getKeys(dataList) {
+      //     var keys = [];
+      //     var len = dataList.length;
+      //     for (var i = 0; i < len; i++) keys.push(dataList[i].name);
+      //     return keys;
+      //   }
 
       function asyncData() {
         $.getJSON("/bar_age.json").done(function (data) {
+          document.getElementById("workshopPurificationLevel").innerText =
+            data["workshopPurificationLevel"];
+          document.getElementById("illuination").innerText =
+            data["illuination"];
+          document.getElementById("mixedBacteriaVisible").innerText =
+            data["mixedBacteriaVisible"];
+          document.getElementById("matureBacteriaBag").innerText =
+            data["matureBacteriaBag"];
+
           var myChart = echarts.init(document.getElementById("main"));
+          var myChart1 = echarts.init(
+            document.getElementById("relativeHumidity")
+          );
           myChart.setOption({
-            xAxis: { data: getKeys(data) },
-            series: [{ data: data }],
+            xAxis: { data: data["growthPhase"]["name"] },
+            series: [
+              { name: "日期", data: data["growthPhase"]["date"]["data"] },
+              {
+                name: "气温",
+                data: data["growthPhase"]["temperature"]["data"],
+              },
+            ],
           });
+          setTimeout(
+            myChart1.setOption({
+              series: [
+                {
+                  type: "gauge",
+                  data: [
+                    {
+                      name: "相对湿度",
+                      value: data["relativeHumidity"]["data"],
+                    },
+                  ],
+                },
+              ],
+            }),
+            500
+          );
         }); //end $.getJSON
       }
 

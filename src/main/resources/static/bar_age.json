@@ -1,26 +1,38 @@
-[
-  {
-    "name": "<18",
-    "value": 2962
+// [
+//   {
+//     "name": "<18",
+//     "value": 2962
+//   },
+//   {
+//     "name": "18-23",
+//     "value": 3119
+//   },
+//   {
+//     "name": "24-30",
+//     "value": 2563
+//   },
+//   {
+//     "name": "31-40",
+//     "value": 1025
+//   },
+//   {
+//     "name": "41-50",
+//     "value": 2790
+//   },
+//   {
+//     "name": ">50",
+//     "value": 4074
+//   }
+// ]
+{
+  "growthPhase": {
+    "name": ["定殖期", "封面期", "健壮期", "成熟后"],
+    "date": { "data": [5, 7, 16, 40], "unit": "d" },
+    "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
   },
-  {
-    "name": "18-23",
-    "value": 3119
-  },
-  {
-    "name": "24-30",
-    "value": 2563
-  },
-  {
-    "name": "31-40",
-    "value": 1025
-  },
-  {
-    "name": "41-50",
-    "value": 2790
-  },
-  {
-    "name": ">50",
-    "value": 4074
-  }
-]
+  "relativeHumidity": { "data": 60, "unit": "%" },
+  "workshopPurificationLevel": "10万级以上",
+  "illuination": "避光",
+  "mixedBacteriaVisible": "有光",
+  "matureBacteriaBag": "4-6℃，避光贮存，≤60d"
+}
