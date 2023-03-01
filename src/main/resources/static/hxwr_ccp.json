@@ -11,11 +11,8 @@
     },
     "water": {
       "unit": "mg/L",
-      "num_fecalColiforms": { "data": 1000, "unit": "个/100mL" },
-      "name": ["cadmium", "mercury", "arsenic", "lead"],
-      "value": [0.004, 0.0005, 0.008, 0.006],
-      "turbidity": { "data": 2, "unit": "NTU" },
-      "smellTaste": 0
+      "name": ["cadmium", "mercury", "arsenic", "lead", "num_fecalColiforms", "turbidity", "smellTaste"],
+      "value": [0.004, 0.0005, 0.008, 0.006, "1000/100mL", "2NTU", 0]
     }
   },
   "ccp2": {
