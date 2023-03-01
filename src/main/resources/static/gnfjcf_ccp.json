@@ -1,0 +1,91 @@
+{
+  "name": "功能成分富集调控计划表",
+  "ccp1": {
+    "name": "产地选择",
+    "environment": "无污染源",
+    "air": "无污染",
+    "soil": "无污染",
+    "water": {
+      "turbidity": { "data": 1, "unit": "NTU" },
+      "smellTaste": 0,
+      "num_fecalColiforms": { "data": 200, "unit": "个/100mL" }
+    }
+  },
+  "ccp2": {
+    "name": "原料选择",
+    "polyphenol": {
+      "bacteria": "无",
+      "num_superphosphate": { "data": 25, "unit": "g/kg" },
+      "num_saccharose": { "data": 6, "unit": "g/kg" },
+      "num_potassiumChloride": { "data": 3, "unit": "g/kg" }
+    },
+    "activeLipid": {
+      "riceBranOil": {"data": 1, "unit": "%"},
+      "methylJasmonate": {"data": 600, "unit": "μmol/L"},
+      "ortho-hydroxybenzoicAcid": {"data": 800, "unit": "μmol/L"}
+    },
+    "selenium-rich": {
+      "num_yeast": {"data": 5, "unit": "mg/kg"}
+    }
+  },
+  "ccp3": {
+    "name": "培养料灭菌",
+    "autoclave": {
+      "name": "高压灭菌",
+      "pressure": "0.12MPa",
+      "time": "1.5h",
+      "mushroomBag": "无破损",
+      "temperature": "121°C"
+    }
+  },
+  "ccp4": {
+    "name": "接种",
+    "inoculation": {
+      "bacteria": "无",
+      "pollutionRate": "0.05%"
+    }
+  },
+  "ccp5": {
+    "name": "菌丝体培养",
+    "workshopPurificationLevel": "10万级以上",
+    "growthPhase": {
+      "name": ["定殖期", "封面期", "健壮期", "成熟后"],
+      "date": { "data": [6, 12, 23, 40], "unit": "d" },
+      "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
+    },
+    "relativeHumidity": "65%",
+    "mixedBacteriaVisible": "无",
+    "polysaccharide-enriched": {
+      "num_injections_nutrient": 4,
+      "amylaceum": { "data": 0.2, "unit": "g/mL" },
+      "saccharose": { "data": 0.1, "unit": "g/mL"},
+      "potato": { "data": 0.3, "unit": "g/mL" }
+    }
+  },
+  "ccp6": {
+    "name": "出耳管理",
+    "developmentalStage": [
+      {
+        "name": "原基形成期",
+        "data": ["20°C", "82%", "有", "有"]
+      },
+      {
+        "name": "子实体分化期",
+        "data": ["16°C", "87%", "有", "有"]
+      },
+      {
+        "name": "子实体生长发育期",
+        "data": ["20°C", "92%", "有", "有"]
+      }
+    ]
+  },
+  "ccp7": {
+    "name": "采收干制",
+    "isochlorogeniAcid": { "data": 550, "unit": "μg/g" },
+    "chlorogenicAcid": { "data": 400, "unit": "μg/g" },
+    "neochlorogenicAcid": { "data": 500, "unit": "μg/g" },
+    "crudePolysaccharide": { "data": 40, "unit": "mg/g" },
+    "fat": { "data": 0.3, "unit": "g/100g" },
+    "selenium": { "data": 0.2, "unit": "mg/kg" }
+  }
+}

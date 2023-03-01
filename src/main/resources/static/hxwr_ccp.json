@@ -1,0 +1,96 @@
+{
+  "name": "化学污染物控制表",
+  "ccp1": {
+    "name": "产地选择",
+    "air": "无污染",
+    "soil": {
+      "unit": "mg/L",
+      "name": ["cadmium", "mercury", "arsenic", "lead"],
+      "paddy": [0.25, 0.2, 20, 80],
+      "dryLand": [0.25, 0.25, 25, 50]
+    },
+    "water": {
+      "unit": "mg/L",
+      "num_fecalColiforms": { "data": 1000, "unit": "个/100mL" },
+      "name": ["cadmium", "mercury", "arsenic", "lead"],
+      "value": [0.004, 0.0005, 0.008, 0.006],
+      "turbidity": { "data": 2, "unit": "NTU" },
+      "smellTaste": 0
+    }
+  },
+  "ccp2": {
+    "name": "原料选择",
+    "unit": "mg/kg",
+    "pesticideResidue": {
+      "name": ["malathion", "deltamethrin", "chlorothalonil","cypermethrin","pythium","cyhalothrin","diflubenzuron","triadimefon","pyridaben"],
+      "value": [0.5,0.2,5,0.5,5,0.5,0.5,0.3,0.5]
+    },
+    "heavyMetalLimit": {
+      "name": ["cadmium", "mercury", "arsenic", "lead"],
+      "value": [0.3, 0.1, 0.8, 35]
+    },
+    "antibioticLimit": {
+      "name": ["sulfa-o-methoxypyrimidine", "sulfamethoxine", "aureomycin", "doxycycline", "oxytetracycline", "tetracycline", "enrofloxacin", "ciprofloxacin"],
+      "value": [0.25, 0.25, 0.5, 0.5, 0.5, 0.5, 0.25, 0.25]
+    }
+  },
+  "ccp3": {
+    "name": "培养料灭菌",
+    "autoclave": {
+      "name": "高压灭菌",
+      "pressure": "0.12MPa",
+      "time": "1.5h",
+      "temperature": "121°C"
+    }
+  },
+  "ccp4": {
+    "name": "菌丝体培养",
+    "unit": "mg/kg",
+    "workshopPurificationLevel": "10万级以上",
+    "growthPhase": {
+      "name": ["定殖期", "封面期", "健壮期", "成熟后"],
+      "date": { "data": [6, 12, 23, 40], "unit": "d" },
+      "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
+    },
+    "pesticideResidue": {
+      "name": ["malathion", "deltamethrin", "chlorothalonil","cypermethrin","pythium","cyhalothrin","diflubenzuron"],
+      "value": [2,0.5,40,1.5,1,0.5,40]
+    },
+    "antibioticLimit": {
+      "name": ["sulfa-o-methoxypyrimidine", "sulfamethoxine", "aureomycin", "doxycycline", "oxytetracycline", "tetracycline", "enrofloxacin", "ciprofloxacin"],
+      "value": [0.12, 0.12, 0.25, 0.25, 0.12, 0.12, 0.12, 0.12]
+    }
+  },
+  "ccp5": {
+    "name": "出耳管理",
+    "unit": "mg/kg",
+    "developmentalStage": [
+      {
+        "name": "原基形成期",
+        "data": ["20°C", "80%", "有", "有"]
+      },
+      {
+        "name": "子实体分化期",
+        "data": ["15°C", "85%", "有", "有"]
+      },
+      {
+        "name": "子实体生长发育期",
+        "data": ["15°C", "90%", "有", "有"]
+      }
+    ],
+    "pesticideResidue": {
+      "name": ["malathion", "deltamethrin", "chlorothalonil","cypermethrin","pythium","cyhalothrin","diflubenzuron"],
+      "value": [0.5,0.2,40,0.5,1,0.2,40]
+    },
+    "antibioticLimit": {
+      "name": ["sulfa-o-methoxypyrimidine", "sulfamethoxine", "aureomycin", "doxycycline", "oxytetracycline", "tetracycline", "enrofloxacin", "ciprofloxacin"],
+      "value": [0.1, 0.1, 0.2, 0.2, 0.2, 0.2, 0.1, 0.1]
+    }
+  },
+  "ccp6": {
+    "name": "采收干制",
+    "bleach": "焦亚硫酸钠",
+    "bleachingMethod": "焦亚硫酸钠浸泡",
+    "concentration": "0.05g/L"
+  }
+}
