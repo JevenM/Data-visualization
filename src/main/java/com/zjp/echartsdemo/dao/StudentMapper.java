@@ -9,5 +9,5 @@ import com.zjp.echartsdemo.entity.Student;
 @Repository
 @Transactional
 public interface StudentMapper extends BaseMapper<Student> {
-    // ËùÓĞµÄCRUD²Ù×÷¶¼ÒÑ¾­±àĞ´ºÃÁË
+    // æ‰€æœ‰çš„CRUDæ“ä½œéƒ½å·²ç»ç¼–å†™å¥½äº†
 }

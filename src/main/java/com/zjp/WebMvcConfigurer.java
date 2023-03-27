@@ -8,10 +8,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // ºÍÒ³ÃæÓĞ¹ØµÄ¾²Ì¬Ä¿Â¼¶¼·ÅÔÚÏîÄ¿µÄstaticÄ¿Â¼ÏÂ
+        // å’Œé¡µé¢æœ‰å…³çš„é™æ€ç›®å½•éƒ½æ”¾åœ¨é¡¹ç›®çš„staticç›®å½•ä¸‹
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
-        // ÉÏ´«µÄÍ¼Æ¬ÔÚDÅÌÏÂµÄOTAÄ¿Â¼ÏÂ£¬·ÃÎÊÂ·¾¶Èç£ºhttp://localhost:8081/OTA/d3cf0281-bb7f-40e0-ab77-406db95ccf2c.jpg
-        // ÆäÖĞOTA±íÊ¾·ÃÎÊµÄÇ°×º¡£"file:D:/OTA/"ÊÇÎÄ¼şÕæÊµµÄ´æ´¢Â·¾¶
+        // ä¸Šä¼ çš„å›¾ç‰‡åœ¨Dç›˜ä¸‹çš„OTAç›®å½•ä¸‹ï¼Œè®¿é—®è·¯å¾„å¦‚ï¼šhttp://localhost:8081/OTA/d3cf0281-bb7f-40e0-ab77-406db95ccf2c.jpg
+        // å…¶ä¸­OTAè¡¨ç¤ºè®¿é—®çš„å‰ç¼€ã€‚"file:D:/OTA/"æ˜¯æ–‡ä»¶çœŸå®çš„å­˜å‚¨è·¯å¾„
         registry.addResourceHandler("/suda/static/**").addResourceLocations("classpath:/static/");
     }
 }

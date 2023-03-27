@@ -7,24 +7,24 @@
     "soil": "无污染",
     "water": {
       "turbidity": { "data": 1, "unit": "NTU" },
-      "smellTaste": 0,
-      "num_fecalColiforms": { "data": 200, "unit": "个/100mL" }
+      "smellTaste": "无",
+      "num_fecalColiforms": { "data": 200, "unit": "/100mL" }
     }
   },
   "ccp2": {
     "name": "原料选择",
-    "polyphenol": {
-      "bacteria": "无",
-      "num_superphosphate": { "data": 25, "unit": "g/kg" },
-      "num_saccharose": { "data": 6, "unit": "g/kg" },
-      "num_potassiumChloride": { "data": 3, "unit": "g/kg" }
-    },
-    "activeLipid": {
-      "riceBranOil": {"data": 1, "unit": "%"},
-      "methylJasmonate": {"data": 600, "unit": "μmol/L"},
-      "ortho-hydroxybenzoicAcid": {"data": 800, "unit": "μmol/L"}
-    },
-    "selenium-rich": {
+    "polyphenol": [
+      {"name": "杂菌数", "value": 1, "unit": "g/kg" },
+      {"name": "过磷酸钙", "value": 5, "unit": "g/kg" },
+      {"name": "蔗糖", "value": 6, "unit": "g/kg" },
+      {"name": "氯化钾", "value": 3, "unit": "g/kg" }
+    ],
+    "activeLipid": [
+      {"name": "米糠油", "value": 1, "unit": "%"},
+      {"name": "茉莉酸甲酯", "value": 600, "unit": "μmol/L"},
+      {"name": "水杨酸", "value": 800, "unit": "μmol/L"}
+    ],
+    "selenium_rich": {
       "num_yeast": {"data": 5, "unit": "mg/kg"}
     }
   },
@@ -55,11 +55,13 @@
     },
     "relativeHumidity": "65%",
     "mixedBacteriaVisible": "无",
-    "polysaccharide-enriched": {
+    "polysaccharide_enriched": {
       "num_injections_nutrient": 4,
-      "amylaceum": { "data": 0.2, "unit": "g/mL" },
-      "saccharose": { "data": 0.1, "unit": "g/mL"},
-      "potato": { "data": 0.3, "unit": "g/mL" }
+      "data": [
+        {"name": "葡萄糖", "value": 0.2, "unit": "g/mL" },
+        {"name": "蔗糖", "value": 0.1, "unit": "g/mL"},
+        {"name": "土豆煮水", "value": 0.3, "unit": "g/mL" }
+      ]
     }
   },
   "ccp6": {
@@ -67,15 +69,16 @@
     "developmentalStage": [
       {
         "name": "原基形成期",
-        "data": ["20°C", "82%", "有", "有"]
+        "data": ["20°C", 82, "有", "有"]
+        
       },
       {
         "name": "子实体分化期",
-        "data": ["16°C", "87%", "有", "有"]
+        "data": ["16°C", 87, "有", "有"]
       },
       {
         "name": "子实体生长发育期",
-        "data": ["20°C", "92%", "有", "有"]
+        "data": ["20°C", 92, "有", "有"]
       }
     ]
   },

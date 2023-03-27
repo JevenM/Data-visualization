@@ -5,7 +5,6 @@ import com.zjp.echartsdemo.entity.Province;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zjp.echartsdemo.entity.Class;
 import com.zjp.echartsdemo.service.ClassService;
 import com.zjp.echartsdemo.service.IprovinceService;
@@ -24,7 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
