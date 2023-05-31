@@ -1,14 +1,15 @@
 {
+  "date": "2022-03-01",
   "name": "功能成分富集调控计划表",
   "ccp1": {
     "name": "产地选择",
     "environment": "无污染源",
-    "air": "无污染",
-    "soil": "无污染",
+    "air": "无污染，通风良好",
+    "soil": "符合农业耕地要求",
     "water": {
-      "turbidity": { "data": 1, "unit": "NTU" },
+      "turbidity": { "value": 1, "unit": "NTU" },
       "smellTaste": "无",
-      "num_fecalColiforms": { "data": 200, "unit": "/100mL" }
+      "num_fecalColiforms": { "value": 200, "unit": "/mL" }
     }
   },
   "ccp2": {
@@ -17,7 +18,8 @@
       {"name": "杂菌数", "value": 1, "unit": "g/kg" },
       {"name": "过磷酸钙", "value": 5, "unit": "g/kg" },
       {"name": "蔗糖", "value": 6, "unit": "g/kg" },
-      {"name": "氯化钾", "value": 3, "unit": "g/kg" }
+      {"name": "氯化钾", "value": 3, "unit": "g/kg" },
+      {"name": "苹果渣", "value": 50, "unit": "g/kg" }
     ],
     "activeLipid": [
       {"name": "米糠油", "value": 1, "unit": "%"},
@@ -25,7 +27,7 @@
       {"name": "水杨酸", "value": 800, "unit": "μmol/L"}
     ],
     "selenium_rich": {
-      "num_yeast": {"data": 5, "unit": "mg/kg"}
+      "num_yeast": {"value": 5, "unit": "mg/kg"}
     }
   },
   "ccp3": {
@@ -50,45 +52,36 @@
     "workshopPurificationLevel": "10万级以上",
     "growthPhase": {
       "name": ["定殖期", "封面期", "健壮期", "成熟后"],
-      "date": { "data": [6, 12, 23, 40], "unit": "d" },
-      "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
+      "date": { "value": [6, 12, 23, 40], "unit": "d" },
+      "temperature": { "value": [26, 23, 23, 20], "unit": "℃" }
     },
     "relativeHumidity": "65%",
-    "mixedBacteriaVisible": "无",
-    "polysaccharide_enriched": {
-      "num_injections_nutrient": 4,
-      "data": [
-        {"name": "葡萄糖", "value": 0.2, "unit": "g/mL" },
-        {"name": "蔗糖", "value": 0.1, "unit": "g/mL"},
-        {"name": "土豆煮水", "value": 0.3, "unit": "g/mL" }
-      ]
-    }
+    "mixedBacteriaVisible": "无"
   },
   "ccp6": {
     "name": "出耳管理",
     "developmentalStage": [
       {
         "name": "原基形成期",
-        "data": ["20°C", 82, "有", "有"]
-        
+        "value": ["20°C", 82, "有", "有"]
       },
       {
         "name": "子实体分化期",
-        "data": ["16°C", 87, "有", "有"]
+        "value": ["16°C", 87, "有", "有"]
       },
       {
         "name": "子实体生长发育期",
-        "data": ["20°C", 92, "有", "有"]
+        "value": ["20°C", 92, "有", "有"]
       }
     ]
   },
   "ccp7": {
     "name": "采收干制",
-    "isochlorogeniAcid": { "data": 550, "unit": "μg/g" },
-    "chlorogenicAcid": { "data": 400, "unit": "μg/g" },
-    "neochlorogenicAcid": { "data": 500, "unit": "μg/g" },
-    "crudePolysaccharide": { "data": 40, "unit": "mg/g" },
-    "fat": { "data": 0.3, "unit": "g/100g" },
-    "selenium": { "data": 0.2, "unit": "mg/kg" }
+    "isochlorogeniAcid": { "value": 550, "unit": "μg/g" },
+    "chlorogenicAcid": { "value": 400, "unit": "μg/g" },
+    "neochlorogenicAcid": { "value": 500, "unit": "μg/g" },
+    "crudePolysaccharide": { "value": 40, "unit": "mg/g" },
+    "fat": { "value": 0.3, "unit": "g/100g" },
+    "selenium": { "value": 0.2, "unit": "mg/kg" }
   }
 }

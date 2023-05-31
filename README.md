@@ -23,7 +23,7 @@ Windows 检查方法：Win+R，输入`services.msc`，找到名为 MYSQL57 的 N
 
 点击左边的 `[调试和运行]`三角形按钮之后点击该窗格内的绿色三角，即可运行起来。
 
-Tomcat started on port(s): 8088 (http)，相关配置写在 application.properties 文件中。
+Tomcat started on port(s): 8002 (http)，相关配置写在 application.properties 文件中。
 
 前端端口 `8080`
 

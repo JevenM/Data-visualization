@@ -1,4 +1,5 @@
 {
+  "date": "2022-03-01",
   "name": "生物病害控制计划表",
   "ccp1": {
     "name": "产地选择",
@@ -6,9 +7,9 @@
     "air": "无污染",
     "soil": "无污染",
     "water": {
-      "turbidity": { "data": 1, "unit": "NTU" },
-      "smellTaste": 0,
-      "num_fecalColiforms": { "data": 2000, "unit": "个/100mL" }
+      "turbidity": { "value": 1, "unit": "NTU" },
+      "smellTaste": "无",
+      "num_fecalColiforms": { "value": 2000, "unit": "个/100mL" }
     }
   },
   "ccp2": {
@@ -49,8 +50,8 @@
     "workshopPurificationLevel": "10万级以上",
     "growthPhase": {
       "name": ["定殖期", "封面期", "健壮期", "成熟后"],
-      "date": { "data": [6, 12, 23, 40], "unit": "d" },
-      "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
+      "date": { "value": [6, 12, 23, 40], "unit": "d" },
+      "temperature": { "value": [26, 23, 23, 20], "unit": "℃" }
     },
     "relativeHumidity": "60%",
     "illuination": "避光",
@@ -62,15 +63,15 @@
     "developmentalStage": [
       {
         "name": "原基形成期",
-        "data": ["20°C", "80%", "有", "有"]
+        "value": ["20°C", "80%", "有", "有"]
       },
       {
         "name": "子实体分化期",
-        "data": ["15°C", "85%", "有", "有"]
+        "value": ["15°C", "85%", "有", "有"]
       },
       {
         "name": "子实体生长发育期",
-        "data": ["15°C", "90%", "有", "有"]
+        "value": ["15°C", "90%", "有", "有"]
       }
     ],
     "bacteria": "无",

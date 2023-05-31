@@ -1,6 +1,8 @@
 {
   "name": "化学污染物控制表",
   "ccp1": {
+    "date_start": "2021-09-01",
+    "date_end": "2021-09-01",
     "name": "产地选择",
     "air": "无污染",
     "soil": {
@@ -12,10 +14,11 @@
     "water": {
       "unit": "mg/L",
       "name": ["总镉", "总汞", "总砷", "总铅", "食用菌", "浑浊度", "有无臭和味"],
-      "value": [0.004, 0.0005, 0.008, 0.006, "1000/100mL", "2NTU", "无"]
+      "value": [0.004, 0.0005, 0.008, 0.006, "7900", "2NTU", "无"]
     }
   },
   "ccp2": {
+    "date": "xxx",
     "name": "原料选择",
     "unit": "mg/kg",
     "pesticideResidue": {
@@ -43,11 +46,10 @@
   "ccp4": {
     "name": "菌丝体培养",
     "unit": "mg/kg",
-    "workshopPurificationLevel": "10万级以上",
     "growthPhase": {
       "name": ["定殖期", "封面期", "健壮期", "成熟后"],
-      "date": { "data": [6, 12, 23, 40], "unit": "d" },
-      "temperature": { "data": [26, 23, 23, 20], "unit": "℃" }
+      "date": { "value": [6, 12, 23, 40], "unit": "d" },
+      "temperature": { "value": [26, 23, 23, 20], "unit": "℃" }
     },
     "pesticideResidue": {
       "name": ["马拉硫磷", "溴氰菊酯", "百菌清", "氯氰菊酯", "腐霉利", "高效氟氯氰菊","除虫脲"],
@@ -64,15 +66,15 @@
     "developmentalStage": [
       {
         "name": "原基形成期",
-        "data": ["20°C", 80, 2, 4]
+        "value": ["20°C", 80, 2, 4]
       },
       {
         "name": "子实体分化期",
-        "data": ["15°C", 85, 1, 2]
+        "value": ["15°C", 85, 1, 2]
       },
       {
         "name": "子实体生长发育期",
-        "data": ["15°C", 90, 1.5, 3]
+        "value": ["15°C", 90, 1.5, 3]
       }
     ],
     "pesticideResidue": {
@@ -85,7 +87,7 @@
     }
   },
   "ccp6": {
-    "name": "采收干制",
+    "name": "CCP6-采收干制",
     "bleach": "焦亚硫酸钠",
     "bleachingMethod": "焦亚硫酸钠浸泡",
     "concentration": "0.05g/L"
