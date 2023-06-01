@@ -25,6 +25,8 @@ Windows 检查方法：Win+R，输入`services.msc`，找到名为 MYSQL57 的 N
 
 Tomcat started on port(s): 8002 (http)，相关配置写在 application.properties 文件中。
 
+这个 8002 端口 1.13.186.158 服务器是打开的能用，因为 HTTP_SERVER 都可以直接运行起来。
+
 前端端口 `8080`
 
 ## 部署 war 包到 Tomcat
@@ -97,7 +99,7 @@ tomcat 安装包中各目录作用：
 </dependency>
 ```
 
-3. 添加servlet-api的依赖
+3. 添加servlet-api的依赖（实际用不到）
 
 在 pom.xml 中新增以下依赖：
 ```xml
@@ -169,7 +171,7 @@ public class ZxblogApplication extends SpringBootServletInitializer {
 
 5. 使用VsCode，在左边选中 资源管理器 tab，展开下面的 MAVEN 下拉菜单，点击 package 后面的三角，失败。原因可能是 vscode 未配置好 Maven 的路径。
 
-#### 打包
+#### 打包（这个可以）
 在项目根目录下（即包含pom.xml的目录），在命令行里输入：
 
 `mvn clean package -Dmaven.test.skip=true`
