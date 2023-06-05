@@ -154,11 +154,8 @@ public class ProvinceController {
     @RequestMapping("/echarts")
     public String myECharts(Model model) {
 
-        String skirt = "裙子";
-        int nums = 4;
-
-        model.addAttribute("skirt", skirt);
-        model.addAttribute("nums", nums);
+        model.addAttribute("skirt", "衬衫");
+        model.addAttribute("nums", 50);
 
         return "echarts";
     }
